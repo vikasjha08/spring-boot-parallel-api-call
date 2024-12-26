@@ -60,4 +60,8 @@ sequenceDiagram
   - API calls are made one at a time in a synchronous flow.
   - Slower because each request waits for the previous to complete.
 
+## Performance Results with 2000 calls
+
+![parallel-result.jpg](src/main/resources/static/parallel-result.jpg)
+![sequential-result.jpg](src/main/resources/static/sequential-result.jpg)
 This project is an excellent reference for understanding reactive programming and efficient API communication using Spring WebFlux.

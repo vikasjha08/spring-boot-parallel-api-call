@@ -38,7 +38,7 @@ public class WebClientConfig {
                 //.filter(authorisationFilter(authKey)) //One of the important check is auth check, can handle it as well
                 .defaultHeader("Content-Type", "application/json") // Default headers
                 .defaultHeader("Accept", "application/json") //Can be used to add default header
-                .baseUrl("https://jsonplaceholder.typicode.com/posts/");
+                .baseUrl("https://jsonplaceholder.typicode.com/photos/");
 
     }
 

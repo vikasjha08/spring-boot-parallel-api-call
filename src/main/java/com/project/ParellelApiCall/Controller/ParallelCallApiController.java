@@ -20,7 +20,7 @@ public class ParallelCallApiController {
     @GetMapping("/parallelCall")
     public String parallelCall(){
 
-        List<String> urls = IntStream.rangeClosed(1, 100).mapToObj(String::valueOf).toList();
+        List<String> urls = IntStream.rangeClosed(1, 2000).mapToObj(String::valueOf).toList();
         List<CompletableFuture<String>> futures = urls.stream()
                 .map(apiCallService::asynchronisedApiCall)
                 .toList();
@@ -34,7 +34,7 @@ public class ParallelCallApiController {
     @GetMapping("/sequentialCall")
     public String sequentialCall(){
 
-        List<String> urls = IntStream.rangeClosed(1, 100).mapToObj(String::valueOf).toList();
+        List<String> urls = IntStream.rangeClosed(1, 2000).mapToObj(String::valueOf).toList();
         List<String> finalList = urls.stream()
                 .map(apiCallService::synchronisedApiCall)
                 .toList();
