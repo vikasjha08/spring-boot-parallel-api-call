@@ -30,13 +30,15 @@ The application follows an event-driven, non-blocking architecture. Key componen
 - **WebClient**: Asynchronous non-blocking HTTP client for API calls.
 
 ```mermaid
-graph TD
-A[Client Request] -->|HTTP Request| B[Controller]
-B -->|API Call| C[Service]
-C -->|Parallel or Sequential Calls| D[External APIs]
-D --> C
-C -->|Aggregated Response| B
-B -->|HTTP Response| A
+sequenceDiagram
+    participant User
+    participant Controller
+    participant Service
+    User->>Controller: GET /sequentialCall
+    Controller->>Service: Generate list of URLs (1-2000)
+    Service->>Service: All request is sent at once and then all result is aggregated
+    Service-->>Controller: List of processed responses (synchronous)
+    Controller->>User: Operation Completed
 ```
 
 ### Sequential Call Workflow
@@ -46,7 +48,7 @@ sequenceDiagram
     participant Controller
     participant Service
     User->>Controller: GET /sequentialCall
-    Controller->>Service: Generate list of URLs (1-100)
+    Controller->>Service: Generate list of URLs (1-2000)
     Service->>Service: Process each URL one after another
     Service-->>Controller: List of processed responses (synchronous)
     Controller->>User: Operation Completed
