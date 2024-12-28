@@ -46,7 +46,7 @@ sequenceDiagram
     participant Controller
     participant Service
     User->>Controller: GET /sequentialCall
-    Controller->>Service: Generate list of URLs (1-100)
+    Controller->>Service: Generate list of URLs (1-2000)
     Service->>Service: Process each URL one after another
     Service-->>Controller: List of processed responses (synchronous)
     Controller->>User: Operation Completed
